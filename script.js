@@ -33,6 +33,11 @@ const pizza = {
 	]
 };
 
+const randomElement = (array) => {
+	const randomIndex = Math.floor(Math.random() * array.length);
+	return array[randomIndex];
+}
+
 //  Listen for form submit 
 const form = document.querySelector('form');
 form.addEventListener('submit', e => {
@@ -42,6 +47,19 @@ form.addEventListener('submit', e => {
 	const priceSelected = document.querySelector('input[name=price]:checked').value;
 
 	console.log(sizeSelected, priceSelected);
+	// Use radio inpit values, to look through pizza object 
+
+	const sizePizzaList = pizza[sizeSelected];
+
+	console.log(sizePizzaList);
+
+	const pricePizzaList = sizePizzaList.filter((pizzaPlace) => {
+		pizzaPlace.price === priceSelected
+	});
+
+	const finalPizzaPlace = randomElement(pricePizzaList);
+	console.log("FINAL: ", finalPizzaPlace);
+
+	
 })
-// Use radio inpit values, to look through pizza object 
 // Display the matching pizza joint to user
